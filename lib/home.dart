@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:akar_icons_flutter/akar_icons_flutter.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'homepage.dart';
-import 'calender.dart';
+import 'calendar.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+  final int index;
+  //const MyHomePage({super.key});
+  const MyHomePage({Key? key, this.index = 0}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -20,6 +22,12 @@ class _MyHomePageState extends State<MyHomePage> {
     TimePage(), 
     ProfilePage(),  
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedIndex = widget.index;
+  }
 
   //Tab selection func
   void _onItemTapped(int index) {
@@ -154,39 +162,42 @@ Widget _buildNavBarItem(IconData regularIcon, IconData filledIcon, String label,
 class TimePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // Top bar
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(FluentIcons.line_horizontal_3_20_filled),
-          onPressed: () {},
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Time Page'),  
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Scaffold(
+          // Top bar
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: Icon(FluentIcons.line_horizontal_3_20_filled),
+            onPressed: () {},
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Time Page'),  
+            ],
+          ),
+          actions: [
+            Container(
+              margin: EdgeInsets.all(8.0),  
+              decoration: BoxDecoration(
+                color: Color.fromARGB(30, 125, 173, 94),
+                shape: BoxShape.circle,
+              ),
+              child: IconButton(
+                icon: Icon(FluentIcons.alert_badge_24_regular),
+                onPressed: () {},
+              ),
+            ),
           ],
         ),
-        actions: [
-          Container(
-            margin: EdgeInsets.all(8.0),  
-            decoration: BoxDecoration(
-              color: Color.fromARGB(30, 125, 173, 94),
-              shape: BoxShape.circle,
-            ),
-            child: IconButton(
-              icon: Icon(FluentIcons.alert_badge_24_regular),
-              onPressed: () {},
-            ),
-          ),
-        ],
+      
+        body: Center(
+          child: Text('Some kind of time page'),
+        ),
+      
       ),
-
-      body: Center(
-        child: Text('Some kind of time page'),
-      ),
-
     );
   }
 }
@@ -194,39 +205,42 @@ class TimePage extends StatelessWidget {
 class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // Top bar
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: Icon(FluentIcons.line_horizontal_3_20_filled),
-          onPressed: () {},
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Profile Page'),  
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Scaffold(
+          // Top bar
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: Icon(FluentIcons.line_horizontal_3_20_filled),
+            onPressed: () {},
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Profile Page'),  
+            ],
+          ),
+          actions: [
+            Container(
+              margin: EdgeInsets.all(8.0),  
+              decoration: BoxDecoration(
+                color: Color.fromARGB(30, 125, 173, 94),
+                shape: BoxShape.circle,
+              ),
+              child: IconButton(
+                icon: Icon(FluentIcons.alert_badge_24_regular),
+                onPressed: () {},
+              ),
+            ),
           ],
         ),
-        actions: [
-          Container(
-            margin: EdgeInsets.all(8.0),  
-            decoration: BoxDecoration(
-              color: Color.fromARGB(30, 125, 173, 94),
-              shape: BoxShape.circle,
-            ),
-            child: IconButton(
-              icon: Icon(FluentIcons.alert_badge_24_regular),
-              onPressed: () {},
-            ),
-          ),
-        ],
+      
+        body: Center(
+          child: Text('See your profile details here'),
+        ),
+      
       ),
-
-      body: Center(
-        child: Text('See your profile details here'),
-      ),
-
     );
   }
 }

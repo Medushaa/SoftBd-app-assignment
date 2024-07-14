@@ -81,11 +81,11 @@ class HomePageContent extends StatelessWidget {
                 child: Row(
                   children: [
                     CircleAvatar(
-                      radius: 40.0,  // Adjust the size as needed
+                      radius: 40.0,  
                       backgroundColor: Colors.grey[200],
                       child: Icon(
                         Icons.person,
-                        size: 40.0,  // Adjust the icon size as needed
+                        size: 40.0,  
                         color: Colors.grey,
                       ),
                     ),
@@ -327,8 +327,8 @@ class HomePageContent extends StatelessWidget {
             padding: EdgeInsets.all(2.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
-              child: Image.asset(
-                'assets/menu_$index.png', // Update with your image paths
+              child: Image.asset( 
+                'assets/menu_$index.png',
                 width: 80.0,
                 height: 80.0,
                 fit: BoxFit.cover,
@@ -347,7 +347,7 @@ class HomePageContent extends StatelessWidget {
                 ),
               ),
               Text(
-                BanglaConverter.engToBan("0000$index"), // Update with your labels
+                BanglaConverter.engToBan("0000$index"), 
                 style: TextStyle(
                   fontSize: 16.0,
                   // fontWeight: FontWeight.bold,
