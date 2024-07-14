@@ -12,17 +12,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.white, // Status bar color of phone
     ));
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'SoftBd Assignment',
-      theme: new ThemeData(
-        //colorSchemeSeed: Colors.green,
+      theme: ThemeData(
+        colorSchemeSeed: Colors.green,
         scaffoldBackgroundColor: const Color(0xFFFFFFFF)
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }

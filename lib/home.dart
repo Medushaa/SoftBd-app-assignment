@@ -7,7 +7,7 @@ import 'calendar.dart';
 class MyHomePage extends StatefulWidget {
   final int index;
   //const MyHomePage({super.key});
-  const MyHomePage({Key? key, this.index = 0}) : super(key: key);
+  const MyHomePage({super.key, this.index = 0});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -17,10 +17,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _selectedIndex = 0;
   final List<Widget> _pages = [
-    HomePageContent(),  //calls the home class below
-    CalendarPage(),   
-    TimePage(), 
-    ProfilePage(),  
+    const HomePageContent(),  //calls the home class below
+    const CalendarPage(),   
+    const TimePage(), 
+    const ProfilePage(),  
   ];
 
   @override
@@ -45,10 +45,10 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: Container(
         width: 70,
         height: 70,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
           gradient: LinearGradient(
-            colors: [const Color.fromARGB(255, 125, 173, 94), Color.fromARGB(255, 57, 116, 76)],
+            colors: [Color.fromARGB(255, 125, 173, 94), Color.fromARGB(255, 57, 116, 76)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -63,16 +63,16 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child: FloatingActionButton(
           onPressed: () {},
-          child: Icon(AkarIcons.camera, size: 30, color: Colors.white,),
           backgroundColor: Colors.transparent,
           elevation: 0,
+          child: const Icon(AkarIcons.camera, size: 30, color: Colors.white,),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
       // Bottom bar
       bottomNavigationBar: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white, 
           boxShadow: [
             BoxShadow(
@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: BottomAppBar(
           color: Colors.white,
           elevation: 0,
-          shape: CircularNotchedRectangle(), //for camera
+          shape: const CircularNotchedRectangle(), //for camera
           notchMargin: 8.0,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -103,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 'Calendar', 
                 1
               ),
-              SizedBox(width: 48),
+              const SizedBox(width: 48),
               _buildNavBarItem(
                 FluentIcons.text_expand_24_regular, 
                 FluentIcons.text_expand_24_filled, 
@@ -140,10 +140,10 @@ Widget _buildNavBarItem(IconData regularIcon, IconData filledIcon, String label,
           ),
           if (isSelected) 
             Container( //the dot below the icons
-              margin: EdgeInsets.only(top: 4),
+              margin: const EdgeInsets.only(top: 4),
               width: 6,
               height: 6,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.black,
               ),
@@ -160,6 +160,8 @@ Widget _buildNavBarItem(IconData regularIcon, IconData filledIcon, String label,
 //The 2 empty pages (homepage and calender page on seperate files)
 
 class TimePage extends StatelessWidget {
+  const TimePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -169,10 +171,10 @@ class TimePage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(
-            icon: Icon(FluentIcons.line_horizontal_3_20_filled),
+            icon: const Icon(FluentIcons.line_horizontal_3_20_filled),
             onPressed: () {},
           ),
-          title: Row(
+          title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Time Page'),  
@@ -180,20 +182,20 @@ class TimePage extends StatelessWidget {
           ),
           actions: [
             Container(
-              margin: EdgeInsets.all(8.0),  
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(8.0),  
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(30, 125, 173, 94),
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: Icon(FluentIcons.alert_badge_24_regular),
+                icon: const Icon(FluentIcons.alert_badge_24_regular),
                 onPressed: () {},
               ),
             ),
           ],
         ),
       
-        body: Center(
+        body: const Center(
           child: Text('Some kind of time page'),
         ),
       
@@ -203,6 +205,8 @@ class TimePage extends StatelessWidget {
 }
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -212,10 +216,10 @@ class ProfilePage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(
-            icon: Icon(FluentIcons.line_horizontal_3_20_filled),
+            icon: const Icon(FluentIcons.line_horizontal_3_20_filled),
             onPressed: () {},
           ),
-          title: Row(
+          title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('Profile Page'),  
@@ -223,20 +227,20 @@ class ProfilePage extends StatelessWidget {
           ),
           actions: [
             Container(
-              margin: EdgeInsets.all(8.0),  
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(8.0),  
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(30, 125, 173, 94),
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: Icon(FluentIcons.alert_badge_24_regular),
+                icon: const Icon(FluentIcons.alert_badge_24_regular),
                 onPressed: () {},
               ),
             ),
           ],
         ),
       
-        body: Center(
+        body: const Center(
           child: Text('See your profile details here'),
         ),
       

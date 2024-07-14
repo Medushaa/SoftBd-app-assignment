@@ -4,10 +4,9 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:softbd_assignment_app/formpage.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart'; //unix time stamp to readable time convert
+import 'package:intl/intl.dart';//unix time stamp to readable time convert
 import 'dart:async';
 import 'dart:convert';
-import 'formpage.dart';
 
 Future<List<Album>> fetchAlbum() async { //from api link. returns a list
   final response = await http
@@ -46,15 +45,9 @@ class Album {  //fields in the api. create an dart album
   }
 
   DateTime getFormattedDateTime() {
-    int timestamp = int.parse(date); // Parse the date string as an integer
-    return DateTime.fromMillisecondsSinceEpoch(timestamp * 1000); // Convert timestamp to DateTime
+    int timestamp = int.parse(date); // date to integer
+    return DateTime.fromMillisecondsSinceEpoch(timestamp * 1000); //convert to DateTime
   }
-
-  // String getFormattedDate() {
-  //   int timestamp = int.parse(date); // Parse the date string as an integer
-  //   DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000); // Convert timestamp to DateTime
-  //   return DateFormat('yyyy-MM-dd – kk:mm').format(dateTime); // Format the DateTime to a readable string
-  // }
 
 }
 
@@ -74,6 +67,7 @@ class _CalendarPageState extends State<CalendarPage> {
     futureAlbum = fetchAlbum();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -82,10 +76,10 @@ class _CalendarPageState extends State<CalendarPage> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(
-            icon: Icon(FluentIcons.line_horizontal_3_20_filled),
+            icon: const Icon(FluentIcons.line_horizontal_3_20_filled),
             onPressed: () {},
           ),
-          title: Row(
+          title: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text('সময়রেখা', style: TextStyle(fontSize: 20)),  
@@ -93,13 +87,13 @@ class _CalendarPageState extends State<CalendarPage> {
           ),
           actions: [
             Container(
-              margin: EdgeInsets.all(8.0),  
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(8.0),  
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(30, 125, 173, 94),
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: Icon(FluentIcons.alert_badge_24_regular),
+                icon: const Icon(FluentIcons.alert_badge_24_regular),
                 onPressed: () {},
               ),
             ),
@@ -111,14 +105,14 @@ class _CalendarPageState extends State<CalendarPage> {
             children: [
               //add new form
               Container(
-                margin: EdgeInsets.only(top:16, left:16, right:16, bottom:6),
+                margin: const EdgeInsets.only(top:16, left:16, right:16, bottom:6),
                 height: 60.0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
                         BanglaConverter.engToBan("আজ, ${DateTime.now().day} জুলাই"),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18.0,
                           //fontWeight: FontWeight.bold,
                         ),
@@ -128,21 +122,21 @@ class _CalendarPageState extends State<CalendarPage> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => myForm()),
+                          MaterialPageRoute(builder: (context) => const myForm()),
                         );
                       },
                       child: Container(
                         height: 30,
                         width: 110,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [const Color.fromARGB(255, 125, 173, 94), Color.fromARGB(255, 57, 116, 76)],
+                          gradient: const LinearGradient(
+                            colors: [Color.fromARGB(255, 125, 173, 94), Color.fromARGB(255, 57, 116, 76)],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),
                           borderRadius: BorderRadius.circular(18.0),
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             'নতুন যোগ করুন',
                             style: TextStyle(
@@ -161,7 +155,7 @@ class _CalendarPageState extends State<CalendarPage> {
               ),
               //calender
               Container(
-                margin: EdgeInsets.only(top:0, left:16, right:16, bottom:16),
+                margin: const EdgeInsets.only(top:0, left:16, right:16, bottom:16),
                 //height: 80.0,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -179,9 +173,8 @@ class _CalendarPageState extends State<CalendarPage> {
                   child: EasyDateTimeLine(
                     initialDate: DateTime.now(),
                     onDateChange: (selectedDate) {
-                      //`selectedDate` the new date selected.
                     },
-                    activeColor: Color.fromARGB(255, 57, 139, 83),
+                    activeColor: const Color.fromARGB(255, 57, 139, 83),
                     headerProps: const EasyHeaderProps(
                       monthPickerType: MonthPickerType.switcher,
                       dateFormatter: DateFormatter.fullDateDayAsStrMY(),
@@ -205,7 +198,7 @@ class _CalendarPageState extends State<CalendarPage> {
               //SizedBox(height: 20.0), 
               Container(
                 width: 1000,
-                margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 6.0),
+                margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 6.0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10.0),
@@ -222,7 +215,7 @@ class _CalendarPageState extends State<CalendarPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'আজকের কার্যক্রম',
                         textAlign: TextAlign.left,
                         style: TextStyle(
@@ -231,103 +224,124 @@ class _CalendarPageState extends State<CalendarPage> {
                         ),
                       ),
                       ///waaait
-                      SizedBox(height:8),
-                       FutureBuilder<List<Album>>(
+                      const SizedBox(height:8),
+                      FutureBuilder<List<Album>>(
                         future: futureAlbum,
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
-                            // String _getTimeOfDay(String formattedDate) {
-                            //   // Parse the formattedDate to get the time
-                            //   DateTime dateTime = DateTime.parse(formattedDate); // Adjust parsing based on your date format
-
-                            //   // Get the hour of the day (24-hour format)
-                            //   int hour = dateTime.hour;
-
-                            //   // Determine if it's day or night based on the hour
-                            //   if (hour >= 6 && hour < 18) {
-                            //     return "Day";
-                            //   } else {
-                            //     return "Night";
-                            //   }
-                            // }
-
-                            // return Text('rhoioeihiwht');
                             return Column(
-                              children: snapshot.data!.map((album) {
+                              children: 
+                              //snapshot.data!.map((album) {
+                              snapshot.data!.asMap().entries.map((entry) {
+                                int index = entry.key;
+                                Album album = entry.value;
                                 DateTime dateTime = album.getFormattedDateTime();
 
-                                return //Row(
-                                  //children: [
-                                    // Container(
-                                    //   padding: EdgeInsets.all(16.0),
-                                    //   child: Column(
-                                    //     mainAxisAlignment: MainAxisAlignment.center,
-                                    //     crossAxisAlignment: CrossAxisAlignment.center,
-                                    //     children: [
-                                    //       Text(
-                                    //         DateFormat('kk:mm').format(dateTime),
-                                    //         style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-                                    //       ),
-                                    //       SizedBox(height: 8.0),
-                                    //       // Text(
-                                    //       //   _getTimeOfDay(album.getFormattedDate()),
-                                    //       //   style: TextStyle(fontSize: 16.0),
-                                    //       // ),
-                                    //     ],
-                                    //   ),
-                                    // ),
-                                    Container(
-                                      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                                      padding: EdgeInsets.all(16.0),
-                                      decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          colors: [
-                                            Color.fromARGB(255, 125, 173, 94),
-                                            Color.fromARGB(255, 57, 116, 76)
-                                          ],
-                                          begin: Alignment.topLeft,
-                                          end: Alignment.bottomRight,
-                                        ),
-                                        borderRadius: BorderRadius.circular(10.0),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          // Text(
-                                          //   'Date: ${album.getFormattedDateTime()}', 
-                                          //   style: TextStyle(fontSize: 14.0),
-                                          // ),
-                                          // SizedBox(height: 8.0),
-                                    
-                                          Text(
-                                            album.name,
-                                            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white),
-                                          ),
-                                          SizedBox(height: 8.0),
-                                          Text(
-                                            '${album.category}',
-                                            style: TextStyle(
-                                              fontSize: 14.0,color: Colors.white)
-                                          ),
-                                          Row(
+                                return 
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: 60,
+                                          alignment: Alignment.center,
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
                                             children: [
-                                              Icon(
-                                                FluentIcons.location_16_regular,
-                                                size: 14.0,
-                                                color: Colors.white,
-                                              ),
-                                              SizedBox(width: 4.0),
                                               Text(
-                                                '${album.location}',
-                                                style: TextStyle(fontSize: 14.0, color: Colors.white),
+                                                (() {
+                                                  if (dateTime.hour >= 0 && dateTime.hour < 6) {
+                                                    return 'রাত';
+                                                  } else if (dateTime.hour >= 6 && dateTime.hour < 12) {
+                                                    return 'সকাল';
+                                                  } else if (dateTime.hour >= 12 && dateTime.hour < 18) {
+                                                    return 'বিকেল';
+                                                  } else {
+                                                    return 'সন্ধ্যা';
+                                                  } 
+                                                })(),
+                                                style: TextStyle(
+                                                  fontSize: 14.0,
+                                                ),
+                                              ),
+                                              Text(
+                                                BanglaConverter.engToBan("${dateTime.hour.toString().padLeft(2, '0')}:${dateTime.minute.toString().padLeft(2, '0')} মি."),
+                                                style: TextStyle(
+                                                  fontSize: 14.0,
+                                                ),
                                               ),
                                             ],
                                           ),
-                                        ],
-                                      ),
-                                    //),
-                                  //],
-                                );
+                                        ),
+
+                                        Container(
+                                          width:230,
+                                          margin: const EdgeInsets.only(top: 8.0, bottom:8, right: 4.0),
+                                          padding: const EdgeInsets.all(16.0),
+                                          decoration: BoxDecoration(
+                                            color: index % 2 != 0 ? Color.fromARGB(255, 37, 37, 37) : null,
+                                            gradient: index % 2 == 0
+                                                ? const LinearGradient(
+                                                    colors: [
+                                                      Color.fromARGB(255, 125, 173, 94),
+                                                      Color.fromARGB(255, 57, 116, 76)
+                                                    ],
+                                                    begin: Alignment.topLeft,
+                                                    end: Alignment.bottomRight,
+                                                  )
+                                                : null,
+                                            borderRadius: BorderRadius.circular(10.0),
+                                          ),
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    FluentIcons.clock_16_regular,
+                                                    size: 14.0,
+                                                    color: Colors.white,
+                                                  ),
+                                                  const SizedBox(width: 4.0),
+                                                  Text(
+                                                    '${DateFormat('dd-MM-yyyy HH:mm').format(dateTime)}', 
+                                                    style: const TextStyle(fontSize: 14.0, color: Colors.white),
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 8.0),
+                                        
+                                              Text(
+                                                album.name,
+                                                style: const TextStyle(fontSize: 16.0, color: Colors.white),
+                                                softWrap: true, //wrap looong text to new lines
+                                              ),
+                                              const SizedBox(height: 8.0),
+                                              Text(
+                                                album.category,
+                                                style: const TextStyle(
+                                                  fontSize: 14.0,color: Colors.white)
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Icon(
+                                                    FluentIcons.location_16_regular,
+                                                    size: 14.0,
+                                                    color: Colors.white,
+                                                  ),
+                                                  const SizedBox(width: 4.0),
+                                                  Text(
+                                                    album.location,
+                                                    style: const TextStyle(fontSize: 14.0, color: Colors.white),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        //),
+                                                                          //],
+                                                                        ),
+                                      ],
+                                    );
                               }).toList(),
                             );
                           } else if (snapshot.hasError) {

@@ -3,6 +3,8 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:bangla_converter/bangla_converter.dart';
 
 class HomePageContent extends StatelessWidget {
+  const HomePageContent({super.key});
+
   @override
   Widget build(BuildContext context) {
     // Expiration date
@@ -29,7 +31,7 @@ class HomePageContent extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(
-            icon: Icon(FluentIcons.line_horizontal_3_20_filled),
+            icon: const Icon(FluentIcons.line_horizontal_3_20_filled),
             onPressed: () {},
           ),
           title: Row(
@@ -39,19 +41,19 @@ class HomePageContent extends StatelessWidget {
                 fit: BoxFit.contain,
                 height: 25,
               ),
-              SizedBox(width: 8), 
-              Text('Flutter Task'),  
+              const SizedBox(width: 8), 
+              const Text('Flutter Task'),  
             ],
           ),
           actions: [
             Container(
-              margin: EdgeInsets.all(8.0), 
-              decoration: BoxDecoration(
+              margin: const EdgeInsets.all(8.0), 
+              decoration: const BoxDecoration(
                 color: Color.fromARGB(10, 0, 0, 0),
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: Icon(FluentIcons.alert_badge_24_regular),
+                icon: const Icon(FluentIcons.alert_badge_24_regular),
                 onPressed: () {},
               ),
             ),
@@ -63,7 +65,7 @@ class HomePageContent extends StatelessWidget {
           children: [
             //the me card
             Container(
-              margin: EdgeInsets.all(16),
+              margin: const EdgeInsets.all(16),
               height: 120.0,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -77,30 +79,30 @@ class HomePageContent extends StatelessWidget {
                 ],
               ),
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Row(
                   children: [
                     CircleAvatar(
                       radius: 40.0,  
                       backgroundColor: Colors.grey[200],
-                      child: Icon(
+                      child: const Icon(
                         Icons.person,
                         size: 40.0,  
                         color: Colors.grey,
                       ),
                     ),
-                    SizedBox(width: 16.0),
+                    const SizedBox(width: 16.0),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'মাসুদা রহমান ফাতিমা',
                           style: TextStyle(
                             fontSize: 22.0,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Text(
                           'সফটবিডি লিমিটেড',
                           style: TextStyle(
@@ -108,7 +110,7 @@ class HomePageContent extends StatelessWidget {
                             color: Colors.grey[700],
                           ),
                         ),
-                        SizedBox(height: 4.0),
+                        const SizedBox(height: 4.0),
                         Row(
                           children: [
                             Icon(
@@ -116,7 +118,7 @@ class HomePageContent extends StatelessWidget {
                               size: 14.0,
                               color: Colors.grey[600],
                             ),
-                            SizedBox(width: 4.0),
+                            const SizedBox(width: 4.0),
                             Text(
                               'ঢাকা',
                               style: TextStyle(
@@ -135,7 +137,7 @@ class HomePageContent extends StatelessWidget {
 
             //Expiration date
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 6.0),
+              margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 6.0),
               padding: const EdgeInsets.all(8.0),
               height: 160.0,
               child: Row(
@@ -154,14 +156,14 @@ class HomePageContent extends StatelessWidget {
                                 value: progress,
                                 strokeWidth: 10.0,
                                 backgroundColor: Colors.grey[200],
-                                valueColor: AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 57, 139, 83)),
+                                valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 57, 139, 83)),
                                 semanticsLabel: 'Linear progress indicator',
                               ),
                             ),
                             Center(
                               child: Text(
                                 BanglaConverter.engToBan("$monthsGone মাস $daysGone দিন"),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 12.0,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -170,8 +172,8 @@ class HomePageContent extends StatelessWidget {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12.0),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 12.0),
                         child: Text(
                           'সময় অতিবাহিত',
                           style: TextStyle(
@@ -182,13 +184,13 @@ class HomePageContent extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(width: 22.0),
+                  const SizedBox(width: 22.0),
                   Expanded(
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         //mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
+                          const Text(
                             'মেয়াদকাল',
                             style: TextStyle(
                               fontSize: 17.0,
@@ -198,37 +200,37 @@ class HomePageContent extends StatelessWidget {
                           Row(
                             children: [
                               //SizedBox(width: 8.0),
-                              Icon(
+                              const Icon(
                                 FluentIcons.calendar_12_regular,
                                 size: 16.0,
                                 color: Colors.black,
                               ),
-                              SizedBox(width: 4.0),
+                              const SizedBox(width: 4.0),
                               Text(
                                 BanglaConverter.engToBan("${startTime.day}ই জানুয়ারী ${startTime.year} - ${expireDate.day}ই জানুয়ারী ${expireDate.year}"),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 12.0,
                                   color: Colors.black,
                                 ),
                               ),
                             ],
                           ),
-                          SizedBox(height: 12.0),
-                          Text(
+                          const SizedBox(height: 12.0),
+                          const Text(
                             'আরোও বাকি',
                             style: TextStyle(
                               fontSize: 16.0,
                               color: Colors.red,
                             ),
                           ),
-                          SizedBox(height: 4.0),
+                          const SizedBox(height: 4.0),
                           Row(
                             //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               _buildTimeBox(yearsLeft, 'বছর'),
-                              SizedBox(width:18.0),
+                              const SizedBox(width:18.0),
                               _buildTimeBox(monthsLeft, 'মাস'),
-                              SizedBox(width:18.0),
+                              const SizedBox(width:18.0),
                               _buildTimeBox(daysLeft, 'দিন'),
                             ],
                           ),
@@ -241,11 +243,11 @@ class HomePageContent extends StatelessWidget {
       
               // the menu options
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+                margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
                 child: GridView.count(
                   crossAxisCount: 3,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   childAspectRatio: 0.8, 
                   children: List.generate(6, (index) {
                     return _buildGridItem(index);
@@ -277,15 +279,15 @@ class HomePageContent extends StatelessWidget {
                   width: 1.0,
                 ),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 9.0, vertical: 4.0),
+              padding: const EdgeInsets.symmetric(horizontal: 9.0, vertical: 4.0),
               child: Text(
                 BanglaConverter.engToBan("$firstDigit"),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14.0,
                 ),
               ),
             ),
-            SizedBox(width: 4.0),
+            const SizedBox(width: 4.0),
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8.0),
@@ -294,20 +296,20 @@ class HomePageContent extends StatelessWidget {
                   width: 1.0,
                 ),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 9.0, vertical: 4.0),
+              padding: const EdgeInsets.symmetric(horizontal: 9.0, vertical: 4.0),
               child: Text(
                 BanglaConverter.engToBan("$secDigit"),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14.0,
                 ),
               ),
             ),
           ],
         ),
-        SizedBox(height: 4.0),
+        const SizedBox(height: 4.0),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 12.0,
             // fontWeight: FontWeight.bold,
             color: Colors.black,
@@ -324,7 +326,7 @@ class HomePageContent extends StatelessWidget {
         InkWell(
           onTap: () {},
           child: Container(
-            padding: EdgeInsets.all(2.0),
+            padding: const EdgeInsets.all(2.0),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Image.asset( 
@@ -336,11 +338,11 @@ class HomePageContent extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8.0),
+        const SizedBox(height: 8.0),
         Flexible(
           child: Column(
             children: [
-              Text("মেনু নং", 
+              const Text("মেনু নং", 
                 style: TextStyle(
                   fontSize: 16.0,
                   // fontWeight: FontWeight.bold,
@@ -348,7 +350,7 @@ class HomePageContent extends StatelessWidget {
               ),
               Text(
                 BanglaConverter.engToBan("0000$index"), 
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16.0,
                   // fontWeight: FontWeight.bold,
                 ),
