@@ -4,6 +4,7 @@ import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:softbd_assignment_app/formpage.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart'; //unix time stamp to readable time convert
 import 'dart:async';
 import 'dart:convert';
 import 'formpage.dart';
@@ -43,6 +44,18 @@ class Album {  //fields in the api. create an dart album
       location: json['location'] ?? 'Unknown location',
     );
   }
+
+  DateTime getFormattedDateTime() {
+    int timestamp = int.parse(date); // Parse the date string as an integer
+    return DateTime.fromMillisecondsSinceEpoch(timestamp * 1000); // Convert timestamp to DateTime
+  }
+
+  // String getFormattedDate() {
+  //   int timestamp = int.parse(date); // Parse the date string as an integer
+  //   DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000); // Convert timestamp to DateTime
+  //   return DateFormat('yyyy-MM-dd – kk:mm').format(dateTime); // Format the DateTime to a readable string
+  // }
+
 }
 
 class CalendarPage extends StatefulWidget {
@@ -53,7 +66,7 @@ class CalendarPage extends StatefulWidget {
 }
 
 class _CalendarPageState extends State<CalendarPage> {
-  late Future<Album> futureAlbum;
+  late Future<List<Album>> futureAlbum;
 
   @override
   void initState() { //happens at start
@@ -219,39 +232,103 @@ class _CalendarPageState extends State<CalendarPage> {
                       ),
                       ///waaait
                       SizedBox(height:8),
-                      FutureBuilder<Album>(
+                       FutureBuilder<List<Album>>(
                         future: futureAlbum,
                         builder: (context, snapshot) {
                           if (snapshot.hasData) {
+                            // String _getTimeOfDay(String formattedDate) {
+                            //   // Parse the formattedDate to get the time
+                            //   DateTime dateTime = DateTime.parse(formattedDate); // Adjust parsing based on your date format
+
+                            //   // Get the hour of the day (24-hour format)
+                            //   int hour = dateTime.hour;
+
+                            //   // Determine if it's day or night based on the hour
+                            //   if (hour >= 6 && hour < 18) {
+                            //     return "Day";
+                            //   } else {
+                            //     return "Night";
+                            //   }
+                            // }
+
                             // return Text('rhoioeihiwht');
                             return Column(
-                              children: snapshot.data!.map((album) => Container(
-                                        margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                                        padding: EdgeInsets.all(16.0),
-                                        decoration: BoxDecoration(
-                                          color: Colors.blue[100],
-                                          borderRadius: BorderRadius.circular(10.0),
-                                        ),
-                                        child: Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              album.name,
-                                              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
-                                            ),
-                                            SizedBox(height: 8.0),
-                                            Text(
-                                              'Category: ${album.category}',
-                                              style: TextStyle(fontSize: 14.0),
-                                            ),
-                                            Text(
-                                              'Location: ${album.location}',
-                                              style: TextStyle(fontSize: 14.0),
-                                            ),
+                              children: snapshot.data!.map((album) {
+                                DateTime dateTime = album.getFormattedDateTime();
+
+                                return //Row(
+                                  //children: [
+                                    // Container(
+                                    //   padding: EdgeInsets.all(16.0),
+                                    //   child: Column(
+                                    //     mainAxisAlignment: MainAxisAlignment.center,
+                                    //     crossAxisAlignment: CrossAxisAlignment.center,
+                                    //     children: [
+                                    //       Text(
+                                    //         DateFormat('kk:mm').format(dateTime),
+                                    //         style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+                                    //       ),
+                                    //       SizedBox(height: 8.0),
+                                    //       // Text(
+                                    //       //   _getTimeOfDay(album.getFormattedDate()),
+                                    //       //   style: TextStyle(fontSize: 16.0),
+                                    //       // ),
+                                    //     ],
+                                    //   ),
+                                    // ),
+                                    Container(
+                                      margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                                      padding: EdgeInsets.all(16.0),
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            Color.fromARGB(255, 125, 173, 94),
+                                            Color.fromARGB(255, 57, 116, 76)
                                           ],
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
                                         ),
-                                      ))
-                                  .toList(),
+                                        borderRadius: BorderRadius.circular(10.0),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Date: ${album.getFormattedDateTime()}', 
+                                            style: TextStyle(fontSize: 14.0),
+                                          ),
+                                          SizedBox(height: 8.0),
+                                    
+                                          Text(
+                                            album.name,
+                                            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold, color: Colors.white),
+                                          ),
+                                          SizedBox(height: 8.0),
+                                          Text(
+                                            '${album.category}',
+                                            style: TextStyle(
+                                              fontSize: 14.0,color: Colors.white)
+                                          ),
+                                          Row(
+                                            children: [
+                                              Icon(
+                                                FluentIcons.location_16_regular,
+                                                size: 14.0,
+                                                color: Colors.white,
+                                              ),
+                                              SizedBox(width: 4.0),
+                                              Text(
+                                                '${album.location}',
+                                                style: TextStyle(fontSize: 14.0, color: Colors.white),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    //),
+                                  //],
+                                );
+                              }).toList(),
                             );
                           } else if (snapshot.hasError) {
                             return Text('${snapshot.error}');

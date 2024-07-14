@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'SoftBd Assignment',
       theme: new ThemeData(
-        colorSchemeSeed: Colors.green,
+        //colorSchemeSeed: Colors.green,
         scaffoldBackgroundColor: const Color(0xFFFFFFFF)
       ),
       home: MyHomePage(),
