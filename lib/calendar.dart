@@ -293,11 +293,11 @@ class _CalendarPageState extends State<CalendarPage> {
                                       child: Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            'Date: ${album.getFormattedDateTime()}', 
-                                            style: TextStyle(fontSize: 14.0),
-                                          ),
-                                          SizedBox(height: 8.0),
+                                          // Text(
+                                          //   'Date: ${album.getFormattedDateTime()}', 
+                                          //   style: TextStyle(fontSize: 14.0),
+                                          // ),
+                                          // SizedBox(height: 8.0),
                                     
                                           Text(
                                             album.name,

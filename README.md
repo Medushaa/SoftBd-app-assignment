@@ -1,16 +1,10 @@
 # softbd_assignment_app
 
-A new Flutter project.
+Tried to follow the Figma design as much as possible in 24h.
 
-## Getting Started
+Screenshots:
+![app-ss](app-ss.png)
 
-This project is a starting point for a Flutter application.
+Here is a screen recording of the app in a google drive folder:
+[https://drive.google.com/drive/folders/15v3xz7X0JzTRRBhW2IJPuonXOWAvW5S1?usp=sharing](https://drive.google.com/drive/folders/15v3xz7X0JzTRRBhW2IJPuonXOWAvW5S1?usp=sharing)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
