@@ -8,7 +8,7 @@ Applicant name: Masuda Rahman Fatima
 ### Screenshots:
 ![app-ss-v1](app-ss-v1.png)
 
-Here is a screen recording of the app in a google drive folder:
+Here is a screen recording of the app in a google drive folder including the apk file to install on android:
 [https://drive.google.com/drive/folders/15v3xz7X0JzTRRBhW2IJPuonXOWAvW5S1?usp=sharing](https://drive.google.com/drive/folders/15v3xz7X0JzTRRBhW2IJPuonXOWAvW5S1?usp=sharing)
 
 
